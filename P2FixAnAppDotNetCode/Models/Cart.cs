@@ -8,10 +8,13 @@ namespace P2FixAnAppDotNetCode.Models
     /// </summary>
     public class Cart : ICart
     {
+
+        private readonly List<CartLine> _cartLines = new List<CartLine>();
+
         /// <summary>
         /// Read-only property for display only
         /// </summary>
-        public IEnumerable<CartLine> Lines => GetCartLineList();
+        public IEnumerable<CartLine> Lines => _cartLines.AsReadOnly();
 
         /// <summary>
         /// Return the actual cartline list
@@ -27,7 +30,15 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>//
         public void AddItem(Product product, int quantity)
         {
-            // TODO implement the method
+            var cartLine = _cartLines.FirstOrDefault(cl => cl.Product.Id == product.Id);
+            if (cartLine != null)
+            {
+                cartLine.Quantity += quantity;
+            }
+            else
+            {
+                _cartLines.Add(new CartLine { Product = product, Quantity = quantity });
+            }
         }
 
         /// <summary>
@@ -59,8 +70,7 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public Product FindProductInCartLines(int productId)
         {
-            // TODO implement the method
-            return null;
+                return null;
         }
 
         /// <summary>

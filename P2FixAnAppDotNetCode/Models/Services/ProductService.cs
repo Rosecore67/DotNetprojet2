@@ -1,5 +1,6 @@
 ﻿using P2FixAnAppDotNetCode.Models.Repositories;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace P2FixAnAppDotNetCode.Models.Services
 {
@@ -33,7 +34,8 @@ namespace P2FixAnAppDotNetCode.Models.Services
         public Product GetProductById(int id)
         {
             // TODO implement the method
-            return null;
+            List<Product> products = _productRepository.GetAllProducts();
+            return products.FirstOrDefault(p => p.Id == id);
         }
 
         /// <summary>
