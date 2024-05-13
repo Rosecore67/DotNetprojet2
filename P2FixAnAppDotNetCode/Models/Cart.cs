@@ -97,7 +97,16 @@ namespace P2FixAnAppDotNetCode.Models
         /// </summary>
         public Product FindProductInCartLines(int productId)
         {
+            var cartLineToFind = _cartLines.Find(cl => cl.Product.Id == productId);
+
+            if (cartLineToFind != null)
+            {
+                return cartLineToFind.Product;
+            }
+            else
+            {
                 return null;
+            }
         }
 
         /// <summary>
