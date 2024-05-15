@@ -39,11 +39,5 @@ namespace P2FixAnAppDotNetCode.Controllers
                 return View(order);
             }
         }
-
-        public ViewResult Completed()
-        {
-            _cart.Clear();
-            return View();
-        }
     }
 }
