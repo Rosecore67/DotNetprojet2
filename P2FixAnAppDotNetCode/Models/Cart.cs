@@ -17,15 +17,6 @@ namespace P2FixAnAppDotNetCode.Models
         public IEnumerable<CartLine> Lines => _cartLines.AsReadOnly();
 
         /// <summary>
-        /// Return the actual cartline list
-        /// </summary>
-        /// <returns></returns>
-        private List<CartLine> GetCartLineList()
-        {
-            return new List<CartLine>();
-        }
-
-        /// <summary>
         /// Adds a product in the cart or increment its quantity in the cart if already added
         /// </summary>//
         public void AddItem(Product product, int quantity)
