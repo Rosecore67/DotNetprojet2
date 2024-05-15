@@ -32,18 +32,12 @@ namespace P2FixAnAppDotNetCode.Controllers
             {
                 order.Lines = (_cart as Cart)?.Lines.ToArray();
                 _orderService.SaveOrder(order);
-                return RedirectToAction(nameof(Completed));
+                return RedirectToAction("Index", "Product");
             }
             else
             {
                 return View(order);
             }
-        }
-
-        public ViewResult Completed()
-        {
-            _cart.Clear();
-            return View();
         }
     }
 }
